@@ -1,8 +1,5 @@
 package com.example.twanist.project_movie;
 
-/**
- * Created by twanist on 7/31/17.
- */
 
 
 import android.content.Context;
