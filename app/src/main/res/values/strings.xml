@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Project_movie</string>
+    <string name="title">Title:</string>
+    <string name="Release_date">Release_date:</string>
+    <string name="Vote_average">Vote average:</string>
+    <string name="overview">Overview:</string>
+    <string name="popular">Popular</string>
+    <string name="top_release">Top Release</string>
+    <string name="favorate">Favorite</string>
+</resources>
