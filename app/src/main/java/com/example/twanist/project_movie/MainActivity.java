@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -137,16 +139,18 @@ public class MainActivity extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(MoviesContentProvider.CONTENT_URI,
                     null, null, null, null);
             List<MovieData> list = new ArrayList<>();
-            while (cursor.moveToNext()) {
-                String backdrop_path = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.BACKDROP_PATH));
-                String title = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.TITLE));
-                String poster_path = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.POSTER_PATH));
-                double vote_ava = cursor.getDouble(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.VOTE_AVERAGE));
-                String release_date = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.RELEASE_DATE));
-                String overviews = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.OVERVIEW));
-                MovieData movieData = new MovieData(poster_path, poster_path, title, release_date, vote_ava, overviews, 0);
-                list.add(movieData);
+            if(cursor !=null) {
+                while (cursor.moveToNext()) {
+                    String backdrop_path = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.BACKDROP_PATH));
+                    String title = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.TITLE));
+                    String poster_path = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.POSTER_PATH));
+                    double vote_ava = cursor.getDouble(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.VOTE_AVERAGE));
+                    String release_date = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.RELEASE_DATE));
+                    String overviews = cursor.getString(cursor.getColumnIndex(MoviesContract.MoviesContractEntry.OVERVIEW));
+                    MovieData movieData = new MovieData(poster_path, poster_path, title, release_date, vote_ava, overviews, 0);
+                    list.add(movieData);
 
+                }
             }
             toolbar.setTitle("Favorite");
             adapter.swapAdapter(list);
