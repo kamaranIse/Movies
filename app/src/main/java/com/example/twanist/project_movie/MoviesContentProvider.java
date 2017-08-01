@@ -33,8 +33,8 @@ public class MoviesContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-       // sqliteMovies = new SqliteMovies(getContext());
-        //db = sqliteMovies.getWritableDatabase();
+        sqliteMovies = new SqliteMovies(getContext());
+        db = sqliteMovies.getWritableDatabase();
         return true;
     }
 
